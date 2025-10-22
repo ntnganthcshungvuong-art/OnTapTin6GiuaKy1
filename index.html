@@ -1,56 +1,192 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ôn tập Giữa kỳ I - Tin học 6</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background: #f8f9fa; }
-    h1, h2 { text-align: center; color: #2b5797; }
-    .question { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 10px; }
-    .options { margin-left: 20px; }
-    .options label { display: block; }
-    .section { margin-top: 30px; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Giữa kỳ I - Tin học 6</title>
+<style>
+  :root{
+    --brand:#2b5797;
+    --ok:#2e7d32;
+    --bad:#c62828;
+    --warn:#f9a825;
+    --card:#ffffff;
+    --bg:#f6f7fb;
+  }
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); margin:0; color:#222}
+  header{padding:24px 16px; text-align:center; background:#fff; border-bottom:1px solid #e6e8f0; position:sticky; top:0; z-index:1}
+  h1{margin:0; color:var(--brand); letter-spacing:.5px}
+  main{max-width:980px; margin:18px auto 64px; padding:0 16px}
+  h2{color:var(--brand); text-align:center; margin:24px 0 8px}
+  .question{background:var(--card); border:1px solid #e6e8f0; border-radius:12px; padding:16px; margin:12px 0}
+  .qtitle{font-weight:650; margin-bottom:10px}
+  .options{margin-left:8px}
+  .options label{display:block; padding:8px 10px; border-radius:8px; cursor:pointer}
+  .options input{margin-right:8px}
+  .meta{font-size:12px; color:#555}
+  .actions{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:24px 0}
+  button{padding:10px 16px; border-radius:8px; border:1px solid #cfd7e3; background:#fff; cursor:pointer; font-weight:600}
+  button.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+  .result{padding:10px 12px; background:#fff; border:1px dashed #d0d7e2; border-radius:10px; margin-top:8px; display:none}
+  .badge{display:inline-block; font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:8px}
+  .correct{background:#e8f5e9; border:1px solid #c8e6c9}
+  .incorrect{background:#ffebee; border:1px solid #ffcdd2}
+  .mark-correct{outline:2px solid var(--ok); background:#f1faf2}
+  .mark-wrong{outline:2px solid var(--bad); background:#fff5f5}
+  .mark-missed{outline:2px dashed var(--warn); background:#fffde7}
+  .scorebox{position:sticky; bottom:0; background:#fff; border-top:1px solid #e6e8f0; padding:10px 16px; display:flex; gap:12px; align-items:center; justify-content:space-between}
+  .score{font-weight:800; color:var(--brand)}
+  .legend{font-size:12px; display:flex; gap:10px; align-items:center}
+  .key{display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:middle; margin-right:4px}
+  .k1{background:#e8f5e9; border:1px solid #c8e6c9}
+  .k2{background:#ffebee; border:1px solid #ffcdd2}
+  .k3{background:#fffde7; border:1px solid #ffe082}
+  .small{font-size:12px; color:#666}
+  summary{cursor:pointer; font-weight:600}
+  .muted{color:#666}
+</style>
 </head>
 <body>
-  <h1>ĐỀ CƯƠNG ÔN TẬP GIỮA KÌ I - TIN HỌC 6</h1>
-  <h2>PHẦN TRẮC NGHIỆM</h2>
+  <header>
+    <h1>ĐỀ CƯƠNG ÔN TẬP GIỮA KÌ I - TIN HỌC 6</h1>
+    <div class="small muted">Chọn đáp án, bấm “Chấm điểm” để xem đúng/sai và đáp án gợi ý.</div>
+  </header>
+  <main>
 
-  <!-- 30 câu trắc nghiệm -->
-  <div class="question">
-    <p><strong>Câu 1:</strong> Bức thư viết tay gửi cho bạn là</p>
-    <div class="options">
-      <label><input type="radio" name="q1"> A. vật mang tin.</label>
-      <label><input type="radio" name="q1"> B. thông tin.</label>
-      <label><input type="radio" name="q1"> C. dữ liệu.</label>
-      <label><input type="radio" name="q1"> D. vật mang tin, thông tin và dữ liệu.</label>
-    </div>
+    <h2>PHẦN TRẮC NGHIỆM</h2>
+<div class="question" id="q1"><div class="qtitle">Câu 1: Bức thư viết tay gửi cho bạn là</div><div class="options"><label><input type="radio" name="q1" data-correct="false"> A. vật mang tin.</label><label><input type="radio" name="q1" data-correct="false"> B. thông tin.</label><label><input type="radio" name="q1" data-correct="false"> C. dữ liệu.</label><label><input type="radio" name="q1" data-correct="true"> D. vật mang tin, thông tin và dữ liệu.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q2"><div class="qtitle">Câu 2: Bạn Minh thấy hôm nay trời rất đẹp. Điều Minh nhận biết được gọi là</div><div class="options"><label><input type="radio" name="q2" data-correct="false"> A. vật mang tin.</label><label><input type="radio" name="q2" data-correct="true"> B. thông tin.</label><label><input type="radio" name="q2" data-correct="false"> C. dữ liệu.</label><label><input type="radio" name="q2" data-correct="false"> D. vật mang tin, thông tin và dữ liệu.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q3"><div class="qtitle">Câu 3: Bảng chỉ dẫn là</div><div class="options"><label><input type="radio" name="q3" data-correct="true"> A. vật mang tin.</label><label><input type="radio" name="q3" data-correct="false"> B. thông tin.</label><label><input type="radio" name="q3" data-correct="false"> C. dữ liệu.</label><label><input type="radio" name="q3" data-correct="false"> D. vật mang tin, thông tin và dữ liệu.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q4"><div class="qtitle">Câu 4: Theo bảng chỉ dẫn, Lan biết được từ vị trí mình đang đứng để đến Nhà ga đi cáp treo thì cần rẽ phải sau đó đi thẳng. Điều Lan nhận biết được gọi là</div><div class="options"><label><input type="radio" name="q4" data-correct="false"> A. vật mang tin.</label><label><input type="radio" name="q4" data-correct="true"> B. thông tin.</label><label><input type="radio" name="q4" data-correct="false"> C. dữ liệu.</label><label><input type="radio" name="q4" data-correct="false"> D. vật mang tin, thông tin và dữ liệu.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q5"><div class="qtitle">Câu 5: Trong quá trình xử lí thông tin, các thao tác lập luận, giải thích, phân tích, phán đoán, tưởng tượng… của con người được xếp vào hoạt động</div><div class="options"><label><input type="radio" name="q5" data-correct="false"> A. thu nhận thông tin.</label><label><input type="radio" name="q5" data-correct="true"> B. xử lí thông tin.</label><label><input type="radio" name="q5" data-correct="false"> C. truyền thông tin.</label><label><input type="radio" name="q5" data-correct="false"> D. lưu trữ thông tin.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q6"><div class="qtitle">Câu 6: Khi em gửi email báo kết quả làm bài cho thầy cô, em đang thực hiện bước nào trong quá trình xử lí thông tin?</div><div class="options"><label><input type="radio" name="q6" data-correct="false"> A. Thu nhận.</label><label><input type="radio" name="q6" data-correct="false"> B. Lưu trữ.</label><label><input type="radio" name="q6" data-correct="false"> C. Xử lí.</label><label><input type="radio" name="q6" data-correct="true"> D. Truyền.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q7"><div class="qtitle">Câu 7: Lan xem dự báo thời tiết thấy “Ngày mai trời lạnh dưới 18°C”. Thông tin đó giúp Lan quyết định</div><div class="options"><label><input type="radio" name="q7" data-correct="false"> A. mang theo áo mưa.</label><label><input type="radio" name="q7" data-correct="true"> B. mặc áo ấm khi ra ngoài.</label><label><input type="radio" name="q7" data-correct="false"> C. đi tắm sớm hơn.</label><label><input type="radio" name="q7" data-correct="false"> D. ra ngoài chơi thể thao.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q8"><div class="qtitle">Câu 8: Lan biết được thời gian thi giữa học kì I qua thông báo của nhà trường. Thông tin đó giúp Lan</div><div class="options"><label><input type="radio" name="q8" data-correct="false"> A. biết cần chuẩn bị gì cho chuyến du lịch hè.</label><label><input type="radio" name="q8" data-correct="true"> B. lên kế hoạch ôn tập đúng thời gian.</label><label><input type="radio" name="q8" data-correct="false"> C. không cần ôn bài nữa.</label><label><input type="radio" name="q8" data-correct="false"> D. đi chơi cùng bạn bè.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q9"><div class="qtitle">Câu 9: Khi đang tham gia giao thông, thấy đèn tín hiệu chuyển sang màu vàng, Khôi sẽ</div><div class="options"><label><input type="radio" name="q9" data-correct="false"> A. dừng xe trước vạch kẻ đường.</label><label><input type="radio" name="q9" data-correct="false"> B. tiếp tục đi.</label><label><input type="radio" name="q9" data-correct="true"> C. chuẩn bị dừng xe trước vạch kẻ đường.</label><label><input type="radio" name="q9" data-correct="false"> D. không làm gì cả.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q10"><div class="qtitle">Câu 10: Đơn vị đo dung lượng thông tin nhỏ nhất là</div><div class="options"><label><input type="radio" name="q10" data-correct="false"> A. Byte.</label><label><input type="radio" name="q10" data-correct="false"> B. Digit.</label><label><input type="radio" name="q10" data-correct="false"> C. Kilobyte.</label><label><input type="radio" name="q10" data-correct="true"> D. Bit.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q11"><div class="qtitle">Câu 11: Dãy bit là</div><div class="options"><label><input type="radio" name="q11" data-correct="true"> A. dãy những kí hiệu 0 và 1.</label><label><input type="radio" name="q11" data-correct="false"> B. âm thanh phát ra từ máy tính.</label><label><input type="radio" name="q11" data-correct="false"> C. một dãy chỉ gồm chữ số.</label><label><input type="radio" name="q11" data-correct="false"> D. dãy những chữ số từ 0 đến 9.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q12"><div class="qtitle">Câu 12: Hình thuộc tính tệp hinh1a.jpg cho biết tệp ảnh có dung lượng</div><div class="options"><label><input type="radio" name="q12" data-correct="false"> A. 155 byte.</label><label><input type="radio" name="q12" data-correct="true"> B. 155 kilobyte.</label><label><input type="radio" name="q12" data-correct="false"> C. 155 megabyte.</label><label><input type="radio" name="q12" data-correct="false"> D. 155 gigabyte.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q13"><div class="qtitle">Câu 13: Kilobyte được ký hiệu là</div><div class="options"><label><input type="radio" name="q13" data-correct="false"> A. B.</label><label><input type="radio" name="q13" data-correct="false"> B. MB.</label><label><input type="radio" name="q13" data-correct="true"> C. KB.</label><label><input type="radio" name="q13" data-correct="false"> D. GB.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q14"><div class="qtitle">Câu 14: Một Gigabyte (GB) xấp xỉ bao nhiêu byte?</div><div class="options"><label><input type="radio" name="q14" data-correct="false"> A. Một nghìn byte.</label><label><input type="radio" name="q14" data-correct="false"> B. Một triệu byte.</label><label><input type="radio" name="q14" data-correct="true"> C. Một tỉ byte.</label><label><input type="radio" name="q14" data-correct="false"> D. Một nghìn tỉ byte.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q15"><div class="qtitle">Câu 15: Ổ đĩa 64GB, nghĩa là ổ đĩa có thể lưu trữ khoảng</div><div class="options"><label><input type="radio" name="q15" data-correct="true"> A. 64 tỉ Byte.</label><label><input type="radio" name="q15" data-correct="false"> B. 64 triệu Byte.</label><label><input type="radio" name="q15" data-correct="false"> C. 64 Byte.</label><label><input type="radio" name="q15" data-correct="false"> D. 640 nghìn Byte.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q16"><div class="qtitle">Câu 16: MB là kí hiệu của đơn vị đo thông tin</div><div class="options"><label><input type="radio" name="q16" data-correct="false"> A. Kilobyte.</label><label><input type="radio" name="q16" data-correct="false"> B. Gigabyte.</label><label><input type="radio" name="q16" data-correct="true"> C. Megabyte.</label><label><input type="radio" name="q16" data-correct="false"> D. Terabyte.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q17"><div class="qtitle">Câu 17: TB là kí hiệu của đơn vị đo thông tin</div><div class="options"><label><input type="radio" name="q17" data-correct="false"> A. Byte.</label><label><input type="radio" name="q17" data-correct="false"> B. Gigabyte.</label><label><input type="radio" name="q17" data-correct="false"> C. Megabyte.</label><label><input type="radio" name="q17" data-correct="true"> D. Terabyte.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q18"><div class="qtitle">Câu 18: Dãy kí hiệu nhận được khi mã hóa số 4 là</div><div class="options"><label><input type="radio" name="q18" data-correct="false"> A. 111</label><label><input type="radio" name="q18" data-correct="false"> B. 110</label><label><input type="radio" name="q18" data-correct="false"> C. 101</label><label><input type="radio" name="q18" data-correct="true"> D. 100</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q19"><div class="qtitle">Câu 19: Dữ liệu trong máy tính được mã hóa thành dãy bit vì</div><div class="options"><label><input type="radio" name="q19" data-correct="false"> A. dãy bit đáng tin cậy hơn.</label><label><input type="radio" name="q19" data-correct="false"> B. dãy bit được xử lí dễ dàng hơn.</label><label><input type="radio" name="q19" data-correct="true"> C. máy tính chỉ làm việc với hai kí tự 0 và 1.</label><label><input type="radio" name="q19" data-correct="false"> D. dãy bit chiếm ít dung lượng nhớ hơn.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q20"><div class="qtitle">Câu 20: Thiết bị nào sau đây không phải thiết bị đầu cuối?</div><div class="options"><label><input type="radio" name="q20" data-correct="false"> A. Máy tính.</label><label><input type="radio" name="q20" data-correct="false"> B. Máy in.</label><label><input type="radio" name="q20" data-correct="true"> C. Bộ định tuyến (Router).</label><label><input type="radio" name="q20" data-correct="false"> D. Máy quét.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q21"><div class="qtitle">Câu 21: Thiết bị đầu cuối nào có thể kết nối Bộ chuyển mạch (Switch)?</div><div class="options"><label><input type="radio" name="q21" data-correct="true"> A. Máy in.</label><label><input type="radio" name="q21" data-correct="false"> B. Ti vi.</label><label><input type="radio" name="q21" data-correct="false"> C. Điện thoại thông minh.</label><label><input type="radio" name="q21" data-correct="false"> D. Máy giặt.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q22"><div class="qtitle">Câu 22: Nghe bản tin dự báo thời tiết “Ngày mai trời có thể mưa”, em sẽ xử lý thông tin và quyết định như thế nào?</div><div class="options"><label><input type="radio" name="q22" data-correct="false"> A. Mặc đồng phục.</label><label><input type="radio" name="q22" data-correct="true"> B. Đi học mang theo áo mưa.</label><label><input type="radio" name="q22" data-correct="false"> C. Ăn sáng trước khi đến trường.</label><label><input type="radio" name="q22" data-correct="false"> D. Hẹn bạn Trang cùng đi học.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q23"><div class="qtitle">Câu 23: Dãy kí hiệu 101 biểu diễn số</div><div class="options"><label><input type="radio" name="q23" data-correct="false"> A. 4</label><label><input type="radio" name="q23" data-correct="true"> B. 5</label><label><input type="radio" name="q23" data-correct="false"> C. 6</label><label><input type="radio" name="q23" data-correct="false"> D. 7</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q24"><div class="qtitle">Câu 24: Mạng máy tính là</div><div class="options"><label><input type="radio" name="q24" data-correct="false"> A. một máy tính có cấu hình mạnh.</label><label><input type="radio" name="q24" data-correct="true"> B. nhiều máy tính kết nối với nhau để chia sẻ dữ liệu và thiết bị.</label><label><input type="radio" name="q24" data-correct="false"> C. hệ thống chỉ để lưu trữ thông tin.</label><label><input type="radio" name="q24" data-correct="false"> D. phần mềm giúp gõ văn bản.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q25"><div class="qtitle">Câu 25: Lợi ích chính của mạng máy tính là</div><div class="options"><label><input type="radio" name="q25" data-correct="false"> A. giúp máy tính hoạt động nhanh hơn.</label><label><input type="radio" name="q25" data-correct="true"> B. giúp chia sẻ thông tin, tài nguyên và trao đổi dữ liệu dễ dàng.</label><label><input type="radio" name="q25" data-correct="false"> C. giúp tăng dung lượng bộ nhớ của máy tính.</label><label><input type="radio" name="q25" data-correct="false"> D. giúp người dùng không cần học tin học.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q26"><div class="qtitle">Câu 26: Thiết bị truyền tín hiệu mạng có dây giữa các máy tính nối là</div><div class="options"><label><input type="radio" name="q26" data-correct="false"> A. chuột máy tính.</label><label><input type="radio" name="q26" data-correct="false"> B. tai nghe.</label><label><input type="radio" name="q26" data-correct="true"> C. cáp mạng.</label><label><input type="radio" name="q26" data-correct="false"> D. webcam.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q27"><div class="qtitle">Câu 27: Thiết bị dùng để kết nối nhiều máy tính trong cùng một mạng nội bộ (LAN) là</div><div class="options"><label><input type="radio" name="q27" data-correct="false"> A. chuột.</label><label><input type="radio" name="q27" data-correct="false"> B. bàn phím.</label><label><input type="radio" name="q27" data-correct="true"> C. switch.</label><label><input type="radio" name="q27" data-correct="false"> D. máy in.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q28"><div class="qtitle">Câu 28: Gia đình An có người thân ở nước ngoài. Mỗi tuần, cả nhà muốn nhìn thấy và nói chuyện với nhau. Phương thức liên lạc thuận tiện và tiết kiệm chi phí nhất là</div><div class="options"><label><input type="radio" name="q28" data-correct="false"> A. gọi điện thoại.</label><label><input type="radio" name="q28" data-correct="true"> B. gọi video trực tuyến.</label><label><input type="radio" name="q28" data-correct="false"> C. gửi thư qua đường bưu điện.</label><label><input type="radio" name="q28" data-correct="false"> D. đi đến nhà bạn ấy.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q29"><div class="qtitle">Câu 29: Phát biểu SAI là</div><div class="options"><label><input type="radio" name="q29" data-correct="false"> A. mạng có dây kết nối với các máy tính bằng dây dẫn mạng.</label><label><input type="radio" name="q29" data-correct="true"> B. mạng không dây có thể kết nối ở mọi địa hình.</label><label><input type="radio" name="q29" data-correct="false"> C. mạng không dây không chỉ kết nối các máy tính mà còn cho phép kết nối các thiết bị thông minh khác như điện thoại di động, tivi, tủ lạnh…</label><label><input type="radio" name="q29" data-correct="false"> D. mạng có dây dễ sửa và lắp đặt hơn mạng không dây vì có thể nhìn thấy dây dẫn.</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="q30"><div class="qtitle">Câu 30: Trong quán cà phê, khách hàng muốn truy cập Internet bằng laptop. Cách thuận tiện nhất là</div><div class="options"><label><input type="radio" name="q30" data-correct="false"> A. kéo dây mạng đến từng bàn.</label><label><input type="radio" name="q30" data-correct="true"> B. kết nối Wi‑Fi của quán.</label><label><input type="radio" name="q30" data-correct="false"> C. dùng USB lưu dữ liệu.</label><label><input type="radio" name="q30" data-correct="false"> D. gọi kỹ thuật viên đến cài mạng.</label></div><div class="result" aria-live="polite"></div></div>
+
+<h2>PHẦN TỰ LUẬN (CHỌN Ý ĐÚNG)</h2>
+<p class="meta" style="text-align:center">Mỗi câu có 10 ý, chọn 5 ý đúng. Sau khi bấm “Chấm điểm”, hệ thống sẽ tô màu: <span class="key k1"></span> Đúng; <span class="key k2"></span> Sai; <span class="key k3"></span> Bỏ sót đáp án đúng.</p>
+<div class="question" id="t1"><div class="qtitle">Câu 1: Cô giáo giao nhiệm vụ sưu tầm các bài hát về thầy cô, mái trường để chuẩn bị cho buổi biểu diễn văn nghệ ở lớp. Hãy trình bày cách sử dụng máy tính hoặc thiết bị số để thu thập và truyền thông tin trong tình huống trên.</div><div class="options"><label><input type="checkbox" data-correct="true"> Tìm kiếm bài hát qua Internet (Google, YouTube...)</label><label><input type="checkbox" data-correct="false"> Sao chép đĩa CD của người khác mà không xin phép</label><label><input type="checkbox" data-correct="true"> Gửi bài hát cho bạn qua email hoặc mạng xã hội</label><label><input type="checkbox" data-correct="true"> Sử dụng phần mềm ghi âm để thu âm bài hát</label><label><input type="checkbox" data-correct="false"> Gửi thông tin bằng thư tay</label><label><input type="checkbox" data-correct="true"> Dùng USB để lưu và chuyển bài hát</label><label><input type="checkbox" data-correct="true"> Chia sẻ bài hát lên nhóm lớp trên Zalo</label><label><input type="checkbox" data-correct="false"> Xóa hết các bài hát cũ trên máy tính</label><label><input type="checkbox" data-correct="true"> Tra cứu thông tin tác giả bài hát</label><label><input type="checkbox" data-correct="false"> Dùng phần mềm soạn nhạc để biên tập lời mới</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="t2"><div class="qtitle">Câu 2: Nhóm của em được giao tìm hình ảnh và thông tin về các danh lam thắng cảnh Việt Nam để làm bài thuyết trình môn Địa lí. Em sẽ dùng máy tính hoặc điện thoại như thế nào để tìm kiếm và chia sẻ thông tin với các bạn trong nhóm?</div><div class="options"><label><input type="checkbox" data-correct="true"> Dùng công cụ tìm kiếm (Google, Bing) với từ khóa phù hợp</label><label><input type="checkbox" data-correct="true"> Dùng bộ lọc hình ảnh có giấy phép (Creative Commons) trước khi tải</label><label><input type="checkbox" data-correct="true"> Lưu ảnh với tên file rõ ràng, kèm nguồn tham khảo</label><label><input type="checkbox" data-correct="true"> Tạo thư mục/Drive chung để nhóm cùng cập nhật</label><label><input type="checkbox" data-correct="true"> Chèn nguồn ở cuối slide để tôn trọng bản quyền</label><label><input type="checkbox" data-correct="false"> Sao chép hình ảnh bất kỳ mà không ghi nguồn</label><label><input type="checkbox" data-correct="false"> Chỉ dùng các trang mạng xã hội làm nguồn duy nhất</label><label><input type="checkbox" data-correct="false"> Đăng ảnh nhạy cảm của người khác khi chưa xin phép</label><label><input type="checkbox" data-correct="false"> Xóa bài của bạn khi chưa bàn với nhóm</label><label><input type="checkbox" data-correct="false"> Chia sẻ tài khoản và mật khẩu cho cả nhóm dùng chung</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="t3"><div class="qtitle">Câu 3: Một thẻ nhớ có dung lượng 8 GB, trong đó đã dùng 3 GB. Hỏi thẻ nhớ còn lại bao nhiêu MB chưa sử dụng?</div><div class="options"><label><input type="checkbox" data-correct="true"> Dung lượng ban đầu: 8 GB</label><label><input type="checkbox" data-correct="true"> Dung lượng đã dùng: 3 GB</label><label><input type="checkbox" data-correct="true"> Dung lượng còn lại: 8 − 3 = 5 GB</label><label><input type="checkbox" data-correct="false"> Quy đổi 1 GB = 1000 MB</label><label><input type="checkbox" data-correct="true"> Quy đổi 1 GB = 1024 MB</label><label><input type="checkbox" data-correct="true"> Dung lượng còn lại theo MB: 5 × 1024 = 5120 MB</label><label><input type="checkbox" data-correct="false"> Kết quả đúng là 5000 MB</label><label><input type="checkbox" data-correct="true"> Ghi đáp án: 5120 MB</label><label><input type="checkbox" data-correct="false"> Không cần quy đổi vì đề yêu cầu GB</label><label><input type="checkbox" data-correct="false"> Có thể làm tròn xuống 5100 MB</label></div><div class="result" aria-live="polite"></div></div>
+<div class="question" id="t4"><div class="qtitle">Câu 4: Một điện thoại có bộ nhớ 32 GB, trong đó hệ điều hành chiếm 10 GB. Hỏi điện thoại còn lại bao nhiêu MB để lưu trữ dữ liệu khác?</div><div class="options"><label><input type="checkbox" data-correct="true"> Dung lượng máy: 32 GB</label><label><input type="checkbox" data-correct="true"> Hệ điều hành chiếm: 10 GB</label><label><input type="checkbox" data-correct="true"> Còn lại: 32 − 10 = 22 GB</label><label><input type="checkbox" data-correct="false"> Đổi 1 GB = 1000 MB</label><label><input type="checkbox" data-correct="true"> Đổi 1 GB = 1024 MB</label><label><input type="checkbox" data-correct="true"> 22 × 1024 = 22528 MB</label><label><input type="checkbox" data-correct="false"> Ghi đáp án: 22000 MB</label><label><input type="checkbox" data-correct="true"> Ghi đáp án: 22528 MB</label><label><input type="checkbox" data-correct="false"> Không cần trừ phần hệ điều hành</label><label><input type="checkbox" data-correct="false"> Có thể ghi 22 MB là được</label></div><div class="result" aria-live="polite"></div></div>
+
+<div class="actions">
+  <button class="primary" onclick="grade()">Chấm điểm</button>
+  <button onclick="resetAll()">Làm lại</button>
+</div>
+
+<div class="scorebox">
+  <div class="legend">
+    <span class="key k1"></span> Đúng
+    <span class="key k2" style="margin-left:8px"></span> Sai
+    <span class="key k3" style="margin-left:8px"></span> Bỏ sót
   </div>
+  <div class="score" id="score">Điểm: 0/34 câu</div>
+</div>
 
-  <!-- Em có thể tiếp tục sao y các câu khác (từ 2 → 30) theo cùng cấu trúc -->
+</main>
 
-  <div class="section">
-    <h2>PHẦN TỰ LUẬN</h2>
+<script>
+function grade(){
+  let total = 0;
+  let correct = 0;
 
-    <div class="question">
-      <p><strong>Câu 1:</strong> Cô giáo giao nhiệm vụ sưu tầm các bài hát về thầy cô, mái trường để chuẩn bị cho buổi biểu diễn văn nghệ ở lớp. Hãy trình bày cách sử dụng máy tính hoặc thiết bị số để thu thập và truyền thông tin trong tình huống trên.</p>
-      <p><em>Chọn 5 ý đúng trong 10 ý sau:</em></p>
-      <div class="options">
-        <label><input type="checkbox" name="t1"> Tìm kiếm bài hát qua Internet (Google, YouTube,...)</label>
-        <label><input type="checkbox" name="t1"> Sao chép đĩa CD của người khác mà không xin phép</label>
-        <label><input type="checkbox" name="t1"> Gửi bài hát cho bạn qua email hoặc mạng xã hội</label>
-        <label><input type="checkbox" name="t1"> Sử dụng phần mềm ghi âm để thu âm bài hát</label>
-        <label><input type="checkbox" name="t1"> Gửi thông tin bằng thư tay</label>
-        <label><input type="checkbox" name="t1"> Dùng USB để lưu và chuyển bài hát</label>
-        <label><input type="checkbox" name="t1"> Chia sẻ bài hát lên nhóm lớp trên Zalo</label>
-        <label><input type="checkbox" name="t1"> Xóa hết các bài hát cũ trên máy tính</label>
-        <label><input type="checkbox" name="t1"> Tra cứu thông tin tác giả bài hát</label>
-        <label><input type="checkbox" name="t1"> Dùng phần mềm soạn nhạc để biên tập lời mới</label>
-      </div>
-    </div>
+  // Grade MCQs
+  for(let i=1;i<=30;i++){
+    total++;
+    const q = document.querySelector('#q'+i);
+    const chosen = q.querySelector('input[type=radio]:checked');
+    const res = q.querySelector('.result');
+    res.style.display = 'block';
+    if(!chosen){
+      res.className = 'result incorrect';
+      res.textContent = 'Chưa chọn đáp án.';
+      continue;
+    }
+    const isCorr = chosen.dataset.correct === 'true';
+    q.querySelectorAll('label').forEach(lab=>lab.classList.remove('mark-correct','mark-wrong'));
+    q.querySelectorAll('input[type=radio]').forEach(inp=>{
+      if(inp.dataset.correct==='true'){
+        inp.parentElement.classList.add('mark-correct');
+      }
+    });
+    if(isCorr){
+      correct++;
+      res.className = 'result correct';
+      res.textContent = 'Chính xác!';
+    }else{
+      res.className = 'result incorrect';
+      res.textContent = 'Chưa đúng. Đáp án đúng đã được tô viền xanh.';
+      chosen.parentElement.classList.add('mark-wrong');
+    }
+  }
 
-    <!-- Các câu tự luận khác (Câu 2 - Câu 4) có thể được cấu trúc tương tự -->
-  </div>
+  // Grade multi-select (4 câu)
+  for(let i=1;i<=4;i++){
+    total++;
+    const q = document.querySelector('#t'+i);
+    const res = q.querySelector('.result');
+    res.style.display='block';
+    let ok=true, picked=false;
+    q.querySelectorAll('input[type=checkbox]').forEach(box=>{
+      if(box.checked) picked=true;
+      const should = box.dataset.correct==='true';
+      const lab = box.parentElement;
+      lab.classList.remove('mark-correct','mark-wrong','mark-missed');
+      if(box.checked && should){
+        lab.classList.add('mark-correct');
+      }else if(box.checked && !should){
+        lab.classList.add('mark-wrong');
+        ok=false;
+      }else if(!box.checked && should){
+        lab.classList.add('mark-missed');
+        ok=false;
+      }
+    });
+    if(ok && picked){
+      correct++;
+      res.className='result correct';
+      res.textContent='Tuyệt vời: chọn đủ và đúng 5 ý.';
+    }else{
+      res.className='result incorrect';
+      res.textContent='Cần chọn đúng 5 ý. Ô viền xanh là ý đúng, đỏ là sai, vàng là ý đúng bị bỏ sót.';
+    }
+  }
+
+  document.getElementById('score').textContent = `Điểm: ${correct}/${total} câu`;
+  window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+}
+
+function resetAll(){
+  document.querySelectorAll('input[type=radio],input[type=checkbox]').forEach(i=>i.checked=false);
+  document.querySelectorAll('.result').forEach(r=>{r.style.display='none'; r.textContent=''; r.className='result';});
+  document.querySelectorAll('label').forEach(l=>l.classList.remove('mark-correct','mark-wrong','mark-missed'));
+  document.getElementById('score').textContent = 'Điểm: 0/34 câu';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
 </body>
 </html>
